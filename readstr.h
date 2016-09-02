@@ -14,7 +14,7 @@ The line terminating character is removed from the string.
 #include <stdlib.h>
 #include <string.h>
 
-int _readchrs(FILE *fin, char buf[READBUFLEN], char lter) {
+size_t _readchrs(FILE *fin, char buf[READBUFLEN], char lter) {
 	/*
 	This reads at most READBUFLEN-1 characters into buf. If we read lter or EOF
 	before reading in READBUFLEN-1 characters, we terminate buf with a lter and a
@@ -25,7 +25,7 @@ int _readchrs(FILE *fin, char buf[READBUFLEN], char lter) {
 	*/
 	
 	char curch;
-	int charsreadin = 0;
+	size_t charsreadin = 0;
 	
 	//read till lter or READBUFLEN-2 characters
 	while (charsreadin < READBUFLEN-2) {
@@ -64,7 +64,7 @@ int _readchrs(FILE *fin, char buf[READBUFLEN], char lter) {
 	return charsreadin;
 	}
 
-int readstr(FILE *fin, char **str, char lter) {
+size_t readstr(FILE *fin, char **str, char lter) {
 	/*
 	This reads in from *fin 'til it reaches a lter character. The lter character
 	is removed and *str is pointed to the readin str. Don't forget to free *str
@@ -74,7 +74,7 @@ int readstr(FILE *fin, char **str, char lter) {
 	
 	char buf[READBUFLEN] = {};
 	char *tmp1;
-	int allocsize = 0, chreadin = 0, totreadin = 0;
+	size_t allocsize = 0, chreadin = 0, totreadin = 0;
 	*str = tmp1 = NULL;
 	
 	while ((chreadin = _readchrs(fin, buf, lter)) != 0) {
