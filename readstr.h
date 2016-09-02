@@ -70,6 +70,9 @@ size_t readstr(FILE *fin, char **str, char lter) {
 	is removed and *str is pointed to the readin str. Don't forget to free *str
 	when you're done with it!
 	It returns the total amount of characters read, including lter, or 0 if we reached EOF.
+	
+	NOTE: If 0 characters are read in (ie. we reach EOF immediately), space is not
+	allocated. In simple terms, *str does not need free()d if readstr() returns 0.
 	*/
 	
 	char buf[READBUFLEN] = {};
