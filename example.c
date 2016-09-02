@@ -32,6 +32,8 @@ int main() {
 					// pointing to manually allocated memory,
 					// this will be a memory leak!!!
 			'\n'	// <-- char that represents the end of a line.
+					// if this was '\t', we would split the file
+					// on tabs.
 			))
 		{
 		
@@ -47,8 +49,8 @@ int main() {
 		//line terminator from the string.
 		printf("Line #%i was %3i character%slong excluding the line terminator.\n", linesread, charsread, charsread == 1 ? " " : "s ");
 		
-		//Very Important! We have to free the string when we are done with it and
-		//readstr()'s return value is >= 1!
+		//Very Important! If readstr()'s return value is >= 1,
+		//we have to free the string when we are done with it.
 		free(str);
 		}
 	
