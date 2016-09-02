@@ -10,6 +10,7 @@ The line terminating character is removed from the string.
 //READBUFLEN *MUST* be >= 3
 #define READBUFLEN 4096
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
